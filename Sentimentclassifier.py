@@ -101,3 +101,4 @@ train_model(model_list)
 """Result-->Logistic Regression with highest accuracy of 92%"""
 
 result
+result
