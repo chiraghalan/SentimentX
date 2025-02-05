@@ -1,6 +1,5 @@
-# Save the README content as a file for user to download
 
-readme_content = """# Twitter Sentiment Analysis
+# Twitter Sentiment Analysis
 
 ## 📌 Project Overview
 This project performs sentiment analysis on tweets using machine learning models. The goal is to classify tweets into positive and negative sentiments based on their text. The workflow includes:
@@ -71,5 +70,51 @@ The **Logistic Regression** model outperformed others, making it the best choice
 ## 💡 Installation & Setup
 ### **1️⃣ Clone Repository**
 ```bash
-git clone https://github.com/yourusername/Twitter-Sentiment-Analysis.git
-cd Twitter-Sentiment-Analysis
+git clone https://github.com/chiraghalan/Mental-health-sentiment-classifier
+cd Mental-health-sentiment-classifier
+
+### **2️⃣ Install Dependencies**
+Ensure you have Python installed, then run:
+```bash
+pip install -r requirements.txt
+```
+
+### **3️⃣ Run the Analysis**
+```bash
+python sentimentclassifier.py
+```
+
+---
+## 📝 Usage Instructions
+1. **Load the Dataset**
+   - The script automatically loads `mental_health.csv`.
+2. **Perform EDA**
+   - Run the notebook to visualize data insights.
+3. **Train Models**
+   - Use `train_model()` to train ML models.
+4. **Evaluate Performance**
+   - Confusion matrix and accuracy scores are displayed.
+5. **Predict Sentiments**
+   - Provide new tweets to predict their sentiment.
+
+---
+## 🔥 Future Improvements
+To further enhance this project, we plan to:
+- **Integrate Live Twitter Scraping** (Using Tweepy API)
+- **Use Deep Learning Models** (LSTMs, BERT for NLP tasks)
+- **Deploy a Web App** (Flask/Streamlit for real-time predictions)
+- **Improve Model Explainability** (SHAP, LIME for interpretability)
+
+
+
+---
+## 🤝 Contributing
+Contributions are welcome! If you wish to improve the project, follow these steps:
+1. Fork the repository
+2. Create a feature branch
+3. Commit changes
+4. Open a pull request
+
+---
+## 📞 Contact
+For queries, reach out to: **halanchirag@gmail.com**
