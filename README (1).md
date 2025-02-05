@@ -119,4 +119,4 @@ Contributions are welcome! If you wish to improve the project, follow these step
 
 ---
 ## 📞 Contact
-For queries, reach out to: **your.email@example.com**
+For queries, reach out to: **your.halanchirag.com**
