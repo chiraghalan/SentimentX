@@ -72,6 +72,7 @@ The **Logistic Regression** model outperformed others, making it the best choice
 ```bash
 git clone https://github.com/chiraghalan/Mental-health-sentiment-classifier
 cd Mental-health-sentiment-classifier
+```
 
 ### **2️⃣ Install Dependencies**
 Ensure you have Python installed, then run:
