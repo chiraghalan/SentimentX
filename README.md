@@ -60,7 +60,7 @@ We trained the following models and compared their performance:
 ## 🎯 Results & Model Performance
 | Model | Accuracy | F1 Score | R2 Score |
 |--------|----------|----------|----------|
-| **Logistic Regression** | **92%** | **High** | **High** |
+| **Logistic Regression** | **94%** | **High** | **High** |
 | Support Vector Machine | 89% | Medium | Medium |
 | Decision Tree Classifier | 85% | Low | Low |
 
