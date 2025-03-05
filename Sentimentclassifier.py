@@ -98,7 +98,5 @@ def train_model(models):
 
 train_model(model_list)
 
-"""Result-->Logistic Regression with highest accuracy of 92%"""
-
-result
+"""Result-->Logistic Regression with highest accuracy of 94%"""
 result
