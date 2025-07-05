@@ -1,5 +1,5 @@
 
-# Twitter Sentiment Analysis
+# Twitter Sentiment Analysis.
 
 ## 📌 Project Overview
 This project performs sentiment analysis on tweets using machine learning models. The goal is to classify tweets into positive and negative sentiments based on their text. The workflow includes:
