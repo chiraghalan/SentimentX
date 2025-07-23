@@ -1,102 +1,151 @@
-# standard libraries
-import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+# ============================== #
+# 📦 Library Imports
+# ============================== #
+
+# Standard
+import numpy as np
+import pandas as pd
 import warnings
 warnings.simplefilter('ignore')
 import gc
+import pickle
 
-# visualisation
+# Visualization
 import seaborn as sns
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-# sklearn
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix,ConfusionMatrixDisplay
-
-# dataprep
+# Text Preprocessing
 from dataprep.clean import clean_text
+from sklearn.feature_extraction.text import CountVectorizer
 
-# tensorflow libraries
+# Model Selection & Evaluation
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, f1_score, r2_score, confusion_matrix, ConfusionMatrixDisplay
+from sklearn.model_selection import KFold
+
+# Models
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+
+# Deep Learning (optional)
 import tensorflow as tf
 from tensorflow import keras
 from tqdm.keras import TqdmCallback
 import keras_tuner as kt
-import pickle
 
-# load data
-df = pd.read_csv('E:\Papers\mentalhealth\mentalhealthdataset\mental_health.csv')
-# drop NULLs
+
+# ============================== #
+# 📥 Load and Preprocess Dataset
+# ============================== #
+
+# Load CSV
+df = pd.read_csv(r'E:\Papers\mentalhealth\mentalhealthdataset\mental_health.csv')
+
+# Drop rows with nulls
 df.dropna(inplace=True)
-# view
-df.head()
 
-"""Cleaning Text"""
+# Clean text column
+df = clean_text(df, 'text')
 
-df = clean_text(df,'text')
+# Preview dataset
+print("📄 Dataset Preview:")
+print(df.head())
 
-"""Label Distribution"""
 
-fig = plt.figure(figsize=(6, 6))
-plt.title("label distribution")
-sns.countplot(x=df['label'],palette='pastel')
-fig.tight_layout()
+# ============================== #
+# 📊 Label Distribution
+# ============================== #
+
+plt.figure(figsize=(6, 6))
+sns.countplot(x='label', data=df, palette='pastel')
+plt.title("Label Distribution")
+plt.tight_layout()
 plt.show()
 
-"""Word to Vector
-Count Vectorizer
-"""
 
-# vectorize
-vectorizer = CountVectorizer(min_df=0, lowercase=True)
-vectorizer.fit(df['text'])
-# vectorizer.vocabulary_
+# ============================== #
+# 🧠 Feature Engineering
+# ============================== #
 
-# feature engineering
+# Features and labels
 sentences = df['text'].values
-y = df['label'].values
+labels = df['label'].values
 
-# train-test split [80-20]
-sentences_train, sentences_test, y_train, y_test = train_test_split(sentences, y, test_size=0.20, random_state=42)
+# Train-test split (80-20)
+sentences_train, sentences_test, y_train, y_test = train_test_split(
+    sentences, labels, test_size=0.2, random_state=42, stratify=labels
+)
 
-# vectorize (again!)
+# Vectorization
+vectorizer = CountVectorizer(lowercase=True, min_df=0)
 vectorizer.fit(sentences_train)
 x_train = vectorizer.transform(sentences_train)
-x_test  = vectorizer.transform(sentences_test)
+x_test = vectorizer.transform(sentences_test)
 
-from sklearn.model_selection import KFold
-from sklearn.metrics import accuracy_score,f1_score,r2_score
 
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVC
-from sklearn.gaussian_process import GaussianProcessClassifier
+# ============================== #
+# 🧪 Model Evaluation Framework
+# ============================== #
 
-model_list={"Decision Tree Classifier":DecisionTreeClassifier(),"Logistic Regression":LogisticRegression(),"SVC":SVC()}
+# Define models
+models = {
+    "Decision Tree": DecisionTreeClassifier(),
+    "Logistic Regression": LogisticRegression(),
+    "SVC": SVC()
+}
 
-"""Result DataFrame to store Scores, Accuracy, Error"""
+# Result table
+results_df = pd.DataFrame(columns=["Model", "Accuracy", "F1 Score", "R² Score"])
 
-result=pd.DataFrame(columns=['Name of Model','accuracy','f1_score',"r2score"])
-result
 
-"""Trainning Model on Training Dataset"""
+# ============================== #
+# 🔁 Train and Evaluate Models
+# ============================== #
 
-def train_model(models):
-    for model_name,model in models.items():
-        model.fit(x_train,y_train)
-        pred=model.predict(x_test)
-        result.loc[len(result.index)]=[model_name,accuracy_score(pred,y_test),
-        f1_score(pred,y_test),
-        r2_score(pred,y_test),]
-        cm = confusion_matrix(y_test, pred, labels=model.classes_)
+def evaluate_models(model_dict):
+    global results_df
+    for name, model in model_dict.items():
+        print(f"\n🔧 Training: {name}")
+        model.fit(x_train, y_train)
+        predictions = model.predict(x_test)
+
+        acc = accuracy_score(y_test, predictions)
+        f1 = f1_score(y_test, predictions, average='weighted')  # weighted for imbalance
+        r2 = r2_score(y_test.astype(int), predictions.astype(int))
+
+        results_df.loc[len(results_df)] = [name, acc, f1, r2]
+
+        # Confusion Matrix
+        cm = confusion_matrix(y_test, predictions, labels=model.classes_)
         disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=model.classes_)
         disp.plot()
+        plt.title(f"Confusion Matrix: {name}")
         plt.show()
 
-train_model(model_list)
+    return results_df.sort_values(by='Accuracy', ascending=False).reset_index(drop=True)
 
-"""Result-->Logistic Regression with highest accuracy of 94%"""
-result
+
+# Train models
+final_results = evaluate_models(models)
+
+# Display Results
+print("\n📊 Final Model Comparison:")
+print(final_results)
+
+
+# ============================== #
+# 💾 Optional: Save Best Model
+# ============================== #
+
+# Save best performing model (Logistic Regression)
+best_model_name = final_results.iloc[0]['Model']
+best_model = models[best_model_name]
+
+with open('best_model.pkl', 'wb') as f:
+    pickle.dump(best_model, f)
+
+print(f"\n✅ Saved best model: {best_model_name}")
