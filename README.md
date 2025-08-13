@@ -1,71 +1,84 @@
-😊 Tweet Sentiment Analyzer
+<h1 align="center" style="color:#1DA1F2;">😊 Tweet Sentiment Analyzer</h1>
 
-Analyze the mood of tweets instantly!
-An end-to-end sentiment analysis system that predicts whether a tweet is positive or negative using a trained ensemble machine learning model. Built with Python, scikit-learn, and Streamlit, this project includes preprocessing, model training, and a sleek, interactive web interface.
+<p align="center">
+  <img src="https://img.shields.io/badge/Sentiment-Analysis-blue" />
+  <img src="https://img.shields.io/badge/Python-3.11-green" />
+  <img src="https://img.shields.io/badge/Streamlit-App-orange" />
+</p>
 
-✨ Features
-Smart Preprocessing: Cleans tweets by removing URLs, mentions, hashtags, and extra spaces.
+<p align="center">
+<b>Analyze the mood of tweets instantly!</b><br>
+An end-to-end sentiment analysis system that predicts whether a tweet is <b>positive</b> or <b>negative</b> using a trained ensemble ML model. Built with Python, scikit-learn, and Streamlit.
+</p>
 
-Powerful Ensemble Modeling: Combines Logistic Regression and Linear SVM for improved accuracy.
+---
 
-Real-Time Sentiment Prediction: Get instant feedback on any tweet you enter.
+## ✨ Key Features
 
-Confidence Scores: Shows how strongly the model believes in its prediction.
+- ✅ <b>Smart Preprocessing:</b> Cleans tweets by removing URLs, mentions, hashtags, and extra spaces.  
+- ✅ <b>Powerful Ensemble Modeling:</b> Combines Logistic Regression and Linear SVM for improved accuracy.  
+- ✅ <b>Real-Time Sentiment:</b> Type any tweet and get instant feedback.  
+- ✅ <b>Confidence Scores:</b> Shows how strongly the model believes in its prediction.  
+- ✅ <b>Interactive UI:</b> Color-coded sentiment display and visual confidence bar.  
+- ✅ <b>Reproducible:</b> Fully saved models and vectorizers for easy reuse.
 
-Interactive UI: Color-coded sentiment display and visual confidence bar.
+---
 
-Reproducible: Fully saved models and vectorizers for easy reuse.
+## 🎯 Why This Project is Cool
 
-🎯 Why This Project is Cool
-End-to-End Pipeline: From raw tweets → preprocessing → model → live web app.
+- 🌟 **End-to-End Pipeline:** From raw tweets → preprocessing → model → live web app.  
+- 🌟 **Data-Driven Insights:** Evaluated using Accuracy, Precision, Recall, F1-score, and ROC-AUC.  
+- 🌟 **Fast & Efficient:** Optimized for speed without sacrificing quality.  
+- 🌟 **Portfolio-Ready:** Demonstrates full-stack ML + deployment skills for SDE interviews.
 
-Data-Driven Insights: Evaluated using Accuracy, Precision, Recall, F1-score, and ROC-AUC.
+---
 
-Fast & Efficient: Optimized for speed without sacrificing quality.
+## 🖼 Demo Preview
 
+<p align="center">
+  <img src="screenshot.png" width="700"/>
+</p>
+*(Replace with a GIF or screenshot of the app for more interactivity)*  
 
+---
 
-🖼 Demo Preview
+## 🚀 How to Use
 
-(Add a screenshot or GIF of the app in action for better presentation)
+1. Visit the Streamlit app (if deployed online).  
+2. Type your tweet in the input box.  
+3. Click **Predict** → see the sentiment along with a confidence indicator.  
+4. Get insights instantly with a clean, interactive interface.  
 
-🚀 How to Use
-Visit the Streamlit app (if deployed online).
+---
 
-Type your tweet in the input box.
+## 📂 Project Structure
 
-Click Predict → see the sentiment with a confidence indicator.
+- **Streamlit App:** User interface for real-time tweet prediction.  
+- **Saved Models:** Pre-trained ensemble and TF-IDF vectorizer for immediate use.  
+- **Training Scripts:** Optional scripts to retrain the model from the dataset.  
+- **Requirements:** All dependencies listed for reproducibility.
 
-Get insights instantly with a clean, interactive interface.
+---
 
-📂 Project Structure
-Streamlit App: User interface for real-time tweet prediction.
+## 🔮 Future Improvements
 
-Saved Models: Pre-trained ensemble and TF-IDF vectorizer for immediate use.
+- ⚡ Add **neutral sentiment** classification for more nuanced predictions.  
+- ⚡ Enable **multi-language support** for global tweets.  
+- ⚡ Add **batch processing** to analyze multiple tweets at once.  
+- ⚡ Deploy a **public app** on Streamlit Cloud for easy sharing.
 
-Training Scripts: Optional scripts to retrain the model from the dataset.
+---
 
-Requirements: All dependencies listed for reproducibility.
+## 💻 Technologies Used
 
-🔮 Future Improvements
-Add neutral sentiment classification for more nuanced predictions.
+- Python 3.11 – Core programming language  
+- Pandas & NumPy – Data handling  
+- scikit-learn – Machine learning models and metrics  
+- Streamlit – Web app interface  
+- Joblib – Model serialization and loading  
 
-Enable multi-language support for global tweets.
+---
 
-Add batch processing to analyze multiple tweets at once.
+## 📌 License
 
-Deploy a public app on Streamlit Cloud for easy sharing.
-
-💻 Technologies Used
-Python 3.11 – Core programming language
-
-Pandas & NumPy – Data handling
-
-scikit-learn – Machine learning models and metrics
-
-Streamlit – Web app interface
-
-Joblib – Model serialization and loading
-
-📌 License
 MIT License © 2025
