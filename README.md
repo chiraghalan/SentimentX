@@ -33,12 +33,12 @@ An end-to-end sentiment analysis system that predicts whether a tweet is <b>posi
 
 ---
 
-## 🖼 Demo Preview
 
-<p align="center">
-  <img src="screenshot.png" width="700"/>
-</p>
-*(Replace with a GIF or screenshot of the app for more interactivity)*  
+## 🚀 Demo
+
+Check out the live app here: [**Tweet Sentiment Analyzer**](https://sentimentx-9ete9kxqonnukakfa3bs6t.streamlit.app/)
+
+
 
 ---
 
