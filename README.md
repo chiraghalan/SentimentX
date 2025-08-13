@@ -1,121 +1,68 @@
+😊 Tweet Sentiment Analyzer
 
-# Twitter Sentiment Analysis.
+Analyze the mood of tweets instantly!
+An end-to-end sentiment analysis system that predicts whether a tweet is positive or negative using a trained ensemble machine learning model. Built with Python, scikit-learn, and Streamlit, this project includes preprocessing, model training, and a sleek, interactive web interface.
 
-## 📌 Project Overview
-This project performs sentiment analysis on tweets using machine learning models. The goal is to classify tweets into positive and negative sentiments based on their text. The workflow includes:
-- **Data Preprocessing & Cleaning**
-- **Exploratory Data Analysis (EDA) with Visualizations**
-- **Feature Engineering (Text Vectorization)**
-- **Machine Learning Model Training & Evaluation**
-- **Comparison of Different Models**
-- **Results & Performance Analysis**
+✨ Key Features
+Smart Preprocessing: Cleans tweets by removing URLs, mentions, hashtags, and extra spaces.
 
-The best-performing model, **Logistic Regression**, achieved **92% accuracy** on the test dataset, making it the most suitable choice for sentiment classification.
+Powerful Ensemble Modeling: Combines Logistic Regression and Linear SVM for better predictions.
 
----
-## 📂 Dataset Details
-- **Source**: Kaggle (Mental Health Dataset)
-- **File Used**: `mental_health.csv`
-- **Number of Records**: Varies
-- **Features**:
-  - `text`: Tweet content expressing opinions or emotions.
-  - `label`: Sentiment classification (positive/negative).
+Real-Time Sentiment: Get instant feedback on any tweet you enter.
 
-### **Preprocessing Steps**:
-- Removed null values.
-- Cleaned text data using `dataprep.clean.clean_text` (removed stopwords, punctuation, and special characters).
-- Lowercased all words for uniformity.
-- Applied tokenization and text normalization.
+Confidence Score: Shows how strongly the model believes in its prediction.
 
----
-## 🛠️ Exploratory Data Analysis (EDA)
-EDA helps in understanding the data distribution and patterns. We performed:
-- **Label Distribution Analysis** (Bar Chart - Seaborn Visualization)
-- **Word Frequency Analysis** (Most Common Words in Tweets)
-- **Word Clouds for Positive & Negative Sentiments**
-- **Text Length Distribution** (Histogram)
-- **Correlation Heatmaps** (Feature Dependencies)
+Interactive UI: Color-coded sentiment display and visual confidence bar.
 
----
-## 🚀 Machine Learning Models Used
-We trained the following models and compared their performance:
-1. **Logistic Regression** ✅ (Best Performance - **92% Accuracy**)
-2. **Support Vector Machine (SVM)**
-3. **Decision Tree Classifier**
+Reproducible: Fully saved models and vectorizers for easy reuse.
 
-### **Model Training Approach**:
-- **Feature Engineering**: Text data was converted into numerical format using **CountVectorizer**.
-- **Train-Test Split**: 80-20 ratio was used for training and testing.
-- **Model Training**: Implemented a function `train_model()` to train models efficiently.
-- **Hyperparameter Tuning**: Adjusted key parameters for improved accuracy.
-- **Cross-Validation**: K-Fold cross-validation was used to prevent overfitting.
+🎯 Why This Project is Cool
+End-to-End Pipeline: From raw tweets → preprocessing → model → live web app.
 
-### **Performance Metrics Used**:
-- **Accuracy**
-- **F1 Score** (Harmonic mean of precision & recall)
-- **R2 Score** (Measures goodness of fit)
-- **Confusion Matrix Visualization** (For error analysis)
+Data-Driven Insights: Evaluated on Accuracy, Precision, Recall, F1-score, and ROC-AUC.
 
----
-## 🎯 Results & Model Performance
-| Model | Accuracy | F1 Score | R2 Score |
-|--------|----------|----------|----------|
-| **Logistic Regression** | **94%** | **High** | **High** |
-| Support Vector Machine | 89% | Medium | Medium |
-| Decision Tree Classifier | 85% | Low | Low |
-
-The **Logistic Regression** model outperformed others, making it the best choice for Twitter sentiment analysis.
-
----
-## 💡 Installation & Setup
-### **1️⃣ Clone Repository**
-```bash
-git clone https://github.com/chiraghalan/Mental-health-sentiment-classifier
-cd Mental-health-sentiment-classifier
-```
-
-### **2️⃣ Install Dependencies**
-Ensure you have Python installed, then run:
-```bash
-pip install -r requirements.txt
-```
-
-### **3️⃣ Run the Analysis**
-```bash
-python sentimentclassifier.py
-```
-
----
-## 📝 Usage Instructions
-1. **Load the Dataset**
-   - The script automatically loads `mental_health.csv`.
-2. **Perform EDA**
-   - Run the notebook to visualize data insights.
-3. **Train Models**
-   - Use `train_model()` to train ML models.
-4. **Evaluate Performance**
-   - Confusion matrix and accuracy scores are displayed.
-5. **Predict Sentiments**
-   - Provide new tweets to predict their sentiment.
-
----
-## 🔥 Future Improvements
-To further enhance this project, we plan to:
-- **Integrate Live Twitter Scraping** (Using Tweepy API)
-- **Use Deep Learning Models** (LSTMs, BERT for NLP tasks)
-- **Deploy a Web App** (Flask/Streamlit for real-time predictions)
-- **Improve Model Explainability** (SHAP, LIME for interpretability)
+Fast & Efficient: Optimized for speed without losing prediction quality.
 
 
 
----
-## 🤝 Contributing
-Contributions are welcome! If you wish to improve the project, follow these steps:
-1. Fork the repository
-2. Create a feature branch
-3. Commit changes
-4. Open a pull request
+🖼 Demo Preview
 
----
-## 📞 Contact
-For queries, reach out to: **halanchirag@gmail.com**
+
+
+🚀 How to Use
+Visit the Streamlit app .
+
+Type your tweet in the text box.
+
+Click Predict → see the sentiment along with a confidence indicator.
+
+Get insights instantly with a clean and interactive interface.
+
+📂 Project Structure
+Streamlit App: User interface for real-time tweet prediction.
+
+Saved Models: Pre-trained ensemble and TF-IDF vectorizer for immediate use.
+
+Training Scripts: Optional scripts to retrain the model from the dataset.
+
+Requirements: All necessary dependencies listed for reproducibility.
+
+🔮 Future Improvements
+Add neutral sentiment for more nuanced analysis.
+
+Enable multi-language support for global tweets.
+
+Add batch processing to analyze multiple tweets at once.
+
+Deploy a fully public app on Streamlit Cloud.
+
+💻 Technologies Used
+Python 3.11 – Core programming language
+
+Pandas & NumPy – Data handling
+
+scikit-learn – Machine learning models and metrics
+
+Streamlit – Web app interface
+
+Joblib – Model serialization and loading
